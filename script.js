@@ -1,14 +1,11 @@
-// p1
-var money;
-var time;
+let money;
+let time;
 
-// p2
-money = prompt("Каков ваш бюджет на месяц?", "1000");
+money = +prompt("Каков ваш бюджет на месяц?", "1000");
 time = prompt("Введите текущую дату в формате YYYY-MM-DD", "2019-12-06");
 
-// p3
-ppData = {
-    m: money,
+let appData = {
+    budget: money,
     t: time,
     expenses: {},
     optionalExpenses: {},
@@ -19,16 +16,65 @@ ppData = {
 var nameOfQuestion;
 var cost;
 
-// p4
-nameOfQuestion = prompt("Введите обязательную статью расходов в этом месяце", "Статья 1");
-cost = prompt("Во сколько это обойдется?", "100");
-ppData.expenses = nameOfQuestion;
-ppData.expenses += ": " + cost;
+// nameOfQuestion = prompt("Введите обязательную статью расходов в этом месяце", "Статья 1");
+// cost = prompt("Во сколько это обойдется?", "100");
+// appData.expenses = nameOfQuestion;
+// appData.expenses += ": " + cost;
 
-nameOfQuestion = prompt("Введите обязательную статью расходов в этом месяце", "Статья 2");
-cost = prompt("Во сколько это обойдется?", "200");
-ppData.expenses = nameOfQuestion;
-ppData.expenses += ": " + cost;
+// nameOfQuestion = prompt("Введите обязательную статью расходов в этом месяце", "Статья 2");
+// cost = prompt("Во сколько это обойдется?", "200");
+// appData.expenses = nameOfQuestion;
+// appData.expenses += ": " + cost;
 
-// p5
-alert("Ваш бюджет на день составит " + (money / 30).toFixed(2) + " грн");
+//alert("Ваш бюджет на день составит " + (money / 30).toFixed(2) + " грн");
+
+for (let i = 0; i < 2; i++) {
+    let a = prompt("Введите обязательную статью расходов в этом месяце", ""),
+        b = prompt("Во сколько обойдется?", "");
+    if (typeof(a) === "string" && typeof(a) != null && typeof(b) != null &&
+        a != "" && b != "" && a.length < 50) {
+        console.log("Done");
+        appData.expenses[a] = b;
+    } else {
+
+    }
+}
+
+// let i = 0;
+// while (i++ < 2) {
+//     let a = prompt("Введите обязательную статью расходов в этом месяце", ""),
+//         b = prompt("Во сколько обойдется?", "");
+//     if (typeof(a) === "string" && typeof(a) != null && typeof(b) != null &&
+//         a != "" && b != "" && a.length < 50) {
+//         console.log("Done");
+//         appData.expenses[a] = b;
+//     } else {
+
+//     }
+// }
+
+// let i = 0;
+// do {
+//     let a = prompt("Введите обязательную статью расходов в этом месяце", ""),
+//         b = prompt("Во сколько обойдется?", "");
+//     if (typeof(a) === "string" && typeof(a) != null && typeof(b) != null &&
+//         a != "" && b != "" && a.length < 50) {
+//         console.log("Done");
+//         appData.expenses[a] = b;
+//     } else {
+
+//     }
+// } while (++i < 2);
+
+
+appData.moneyPerDay = appData.budget / 30;
+
+alert("Ежедневный бюджет: " + appData.moneyPerDay);
+
+if (appData.moneyPerDay < 100) {
+    console.log("Минимальный уровень дохода");
+} else if (appData.moneyPerDay < 2000) {
+    console.log("Средний уровенб дохода");
+} else if (appData.moneyPerDay > 5000) {
+    console.log("Высокий уровенб дохода");
+}
