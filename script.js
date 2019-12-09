@@ -36,7 +36,8 @@ for (let i = 0; i < 2; i++) {
         console.log("Done");
         appData.expenses[a] = b;
     } else {
-
+        console.log("Ошибка ввода данных");
+        i--;
     }
 }
 
@@ -49,11 +50,12 @@ for (let i = 0; i < 2; i++) {
 //         console.log("Done");
 //         appData.expenses[a] = b;
 //     } else {
-
+//         console.log("Ошибка ввода данных");
+//         i--;
 //     }
 // }
 
-// let i = 0;
+// let i = 2;
 // do {
 //     let a = prompt("Введите обязательную статью расходов в этом месяце", ""),
 //         b = prompt("Во сколько обойдется?", "");
@@ -61,10 +63,12 @@ for (let i = 0; i < 2; i++) {
 //         a != "" && b != "" && a.length < 50) {
 //         console.log("Done");
 //         appData.expenses[a] = b;
+//i--;
 //     } else {
-
+//console.log("Ошибка ввода данных");
+//i++;
 //     }
-// } while (++i < 2);
+// } while (i);
 
 
 appData.moneyPerDay = appData.budget / 30;
