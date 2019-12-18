@@ -2,11 +2,10 @@ let money, time;
 
 function start() {
     money = +prompt("Каков ваш бюджет на месяц?", "1000");
-    time = prompt("Введите текущую дату в формате YYYY-MM-DD", "2019-12-06");
-
     while (isNaN(money) || money == "" || money == null) {
         money = +prompt("Каков ваш бюджет на месяц?", "1000");
     }
+    time = prompt("Введите текущую дату в формате YYYY-MM-DD", "2019-12-06");
 }
 
 start();
@@ -79,7 +78,22 @@ let appData = {
 
     chooseIncome: function() {
         let items = prompt("Что принесет вам дополнительный доход (перечислите через запятую)", "");
+
+        while (typeof(items) != "string" || items == "" || items == null) {
+            items = prompt("Что принесет вам дополнительный доход (перечислите через запятую)", "")
+        }
         appData.income = items.split(", ");
+        appData.income.push(prompt("Может что-то еще?", ""));
+        appData.income.sort();
+
+        appData.income.forEach(function(items, index) {
+            console.log("Способы заработка: " + (index + 1) + ". " + items);
+        });
+
+        for (let item in appData) {
+            console.log("Наша программа включает в себя данные: ");
+            console.log(item + " содержит " + appData[item]);
+        }
     }
 
 };
@@ -87,7 +101,8 @@ let appData = {
 
 
 appData.chooseExpenses();
-appData.detectDayBudget();
-appData.detectLevel();
-appData.checkSavings();
-appData.chooseOptExpenses();
+// appData.detectDayBudget();
+// appData.detectLevel();
+// appData.checkSavings();
+// appData.chooseOptExpenses();
+appData.chooseIncome();
